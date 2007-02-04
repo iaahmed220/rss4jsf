@@ -1,6 +1,16 @@
 #summary Describes how to use rss4jsf tags
 
+== facelets ==
+{{{
+xmlns:rss4jsf="http://hexiao.cn/rss4jsf"
+}}}
 
+== jsp ==
+{{{
+<%@ taglib uri="http://www.hexiao.cn/rss4jsf" prefix="rss4jsf" %>
+}}}
+
+== usage ==
 {{{
          <rss4jsf:simpleRssOutput
              url="my.rss"
@@ -22,3 +32,4 @@
              </f:facet>
          </rss4jsf:simpleRssOutput>
 }}}
+
