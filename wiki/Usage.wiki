@@ -1,4 +1,5 @@
 #summary Describes how to use rss4jsf tags
+#labels Featured,Phase-Implementation
 
 == facelets ==
 {{{
@@ -32,4 +33,3 @@ xmlns:rss4jsf="http://hexiao.cn/rss4jsf"
              </f:facet>
          </rss4jsf:simpleRssOutput>
 }}}
-
