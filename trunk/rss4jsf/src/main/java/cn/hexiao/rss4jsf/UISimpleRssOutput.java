@@ -106,7 +106,7 @@ public class UISimpleRssOutput extends UIOutput
 		        }
 		        
             	// encode the footer facet if there is one
-            	UIComponent footerFacet = getFacet("header");
+            	UIComponent footerFacet = getFacet("footer");
             	if( footerFacet != null ) {
             		encodeRecursive(context, footerFacet);
             	}
