@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	author: Harlan Iverson
+	license: Apache License Version 2.0
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>rss4jsf</groupId>
+	<artifactId>rss4jsf</artifactId>
+	<version>0.2</version>
+
+
+	<dependencies>
+		<!-- 
+			================================================================
+			FIXME can the depended-upon version of rsslib4j be
+			made compatible with either of these libraries 
+			that are already in the public repository?
+			================================================================
+			
+			<dependency>
+			<groupId>rsslibj</groupId>
+			<artifactId>rsslibj</artifactId>
+			<version>1.0RC2</version>
+			</dependency>
+			
+			<dependency>
+			<groupId>rss4j</groupId>
+			<artifactId>rss4j</artifactId>
+			<version>0.92</version>
+			</dependency>
+		-->
+		<dependency>
+			<groupId>rsslib4j</groupId>
+			<artifactId>rsslib4j</artifactId>
+			<version>0.2</version>
+		</dependency>
+
+		<!-- 
+			
+			================================================================
+		-->
+
+
+		<!-- 
+			FIXME I am not sure which of these dependencies are transitive from
+			the RSS library; neither of them list dependencies in their public POMs.
+			
+			Sometimes the public Maven repo. makes me sad.
+			
+			http://mvnrepository.com/artifact/rss4j/rss4j/0.92
+			http://mvnrepository.com/artifact/rsslibj/rsslibj/1.0RC2
+		-->
+
+		<dependency>
+			<groupId>org.apache.myfaces.core</groupId>
+			<artifactId>myfaces-api</artifactId>
+			<version>1.1.4</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.3</version>
+			<scope>provided</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.7.0</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.3</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.3</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-digester</groupId>
+			<artifactId>commons-digester</artifactId>
+			<version>1.6</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-el</groupId>
+			<artifactId>commons-el</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>1.0</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<!-- ant task non-maven-dist depends on this filename -->
+		<finalName>rss4jsf</finalName>
+	
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>1.5</source>
+						<target>1.5</target>
+						<encoding>utf-8</encoding>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
