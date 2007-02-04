@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<!-- 
+	author: Harlan Iverson
+	license: Apache License Version 2.0
+-->
+<project name="project" default="non-maven-dist" xmlns:artifact="urn:maven-artifact-ant">
+	<description>
+            description
+    </description>
+
+
+	<property environment="env" />
+	<property file="build.properties.local" />
+	<property file="build.properties" />
+	
+	<target name="-check-get-maven-artifact-ant">
+		<available property="-get-maven-artifact-ant-done" file="${maven-jar.local}" />
+	</target>
+
+	<target name="-get-maven-artifact-ant" depends="-check-get-maven-artifact-ant" unless="-get-maven-artifact-ant-done">
+		<mkdir dir="${maven-libs.dir}"/>
+		<get src="${maven-jar.remote}" dest="${maven-jar.local}" />
+	</target>
+
+	<target name="-maven-artifact-ant" depends="-get-maven-artifact-ant">
+		<typedef resource="org/apache/maven/artifact/ant/antlib.xml" uri="urn:maven-artifact-ant">
+			<classpath>
+				<pathelement location="${maven-jar.local}" />
+			</classpath>
+		</typedef>
+	</target>
+
+	<target name="init" depends="-maven-artifact-ant">
+		<tstamp />
+
+
+		<artifact:pom file="pom.xml" id="maven.rss4jsf.project" />
+		<artifact:dependencies filesetId="dependency.rss4jsf.fileset.runtime" pomRefId="maven.rss4jsf.project" useScope="runtime" />
+		<artifact:dependencies filesetId="dependency.rss4jsf.fileset.compile" pomRefId="maven.rss4jsf.project" useScope="compile" />
+		<artifact:dependencies filesetId="dependency.rss4jsf.fileset.test" pomRefId="maven.rss4jsf.project" useScope="test" />
+	</target>
+
+	<target name="install-rsslib4j" depends="-maven-artifact-ant">
+		<tstamp />
+		
+		<artifact:pom file="pom-rsslib4j.xml" id="maven.rsslib4j.project" />
+		<artifact:dependencies filesetId="dependency.rsslib4j.fileset.runtime" pomRefId="maven.rsslib4j.project" useScope="runtime" />
+		
+		<artifact:install file="lib/rsslib4j-0.2.jar">
+			<pom refid="maven.rsslib4j.project" />
+		</artifact:install>
+	</target>
+
+	<target name="non-maven-dist" depends="install-rss4jsf">
+		<tstamp />
+		<mkdir dir="${target.dir}/rss4jsf-with-deps" />
+
+		<copy todir="${target.dir}/rss4jsf-with-deps">
+			<fileset refid="dependency.rss4jsf.fileset.runtime"/>
+			<fileset dir="${target.dir}" includes="${target.jar}" /><!-- jar name is defined in pom.xml -->
+			<mapper type="flatten" />
+		</copy>
+
+	</target>
+
+	<target name="install-rss4jsf" depends="install-rsslib4j, init">
+		<tstamp />
+		<mkdir dir="${target.dir}/classes"/>
+		<javac
+			source="1.5"
+			target="1.5"
+			srcdir="src/main/java"
+			destdir="${target.dir}/classes"
+			>
+			<classpath>
+				<fileset refid="dependency.rss4jsf.fileset.compile"/>
+			</classpath>
+		</javac>
+		
+		<jar destfile="${target.dir}/${target.jar}">
+			<fileset dir="${target.dir}/classes" includes="**/*"/>
+			<fileset dir="src/main/resources" includes="**/*"/>
+		</jar>
+		
+		<artifact:install file="${target.dir}/${target.jar}">
+			<pom refid="maven.rss4jsf.project" />
+		</artifact:install>
+	</target>
+
+	<target name="depends" depends="init">
+		<mkdir dir="${maven-libs.dir}"/>
+		<copy todir="${maven-libs.dir}">
+			<fileset refid="dependency.rss4jsf.fileset.runtime" />
+			<mapper type="flatten" />
+		</copy>
+	</target>
+	
+	<target name="clean">
+		<delete dir="${target.dir}"/>
+		<delete dir="${maven-libs.dir}"/>
+	</target>
+
+</project>
