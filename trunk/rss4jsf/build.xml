@@ -94,5 +94,10 @@
 			<mapper type="flatten" />
 		</copy>
 	</target>
+	
+	<target name="clean">
+		<delete dir="${target.dir}"/>
+		<delete dir="${maven-libs.dir}"/>
+	</target>
 
 </project>
