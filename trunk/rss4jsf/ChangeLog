@@ -1,0 +1,6 @@
+0.2 - 2007-02-03 - Harlan
+	- Added Apache License 2.0 and @authors
+	- Created Ant build file
+	- Created Maven poms
+	- Added the ability to specify header, footer and item facets
+	- Refactored SimpleRssOutput to use new classes in cn.hexiao.rss.rss4jsf.view

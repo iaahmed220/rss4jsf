@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	author: Icess
+	license: Apache License Version 2.0
+-->
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+"http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+<taglib>
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>1.2</jsp-version>
+	<short-name>r4j</short-name>
+	<uri>http://www.hexiao.cn/rss4jsf</uri>
+	<description>This tag library contains a RSS4JSF tag</description>
+
+	<tag>
+		<name>simpleRssOutput</name>
+		<tag-class>cn.hexiao.rss4jsf.SimpleRssOutputTag</tag-class>
+		<body-content>JSP</body-content>
+		<attribute>
+			<name>url</name>
+		</attribute>
+		<attribute>
+			<name>count</name>
+		</attribute>
+		<attribute>
+			<name>channeVar</name>
+			<required>false</required>
+			<description>Defaults to 'channel'</description>
+		</attribute>
+		<attribute>
+			<name>itemVar</name>
+			<required>false</required>
+			<description>Defaults to 'item'</description>
+		</attribute>
+		<attribute>
+			<name>rssEntryTitleStyleClass</name>
+			<required>false</required>
+			<description>class</description>
+		</attribute>
+		<attribute>
+			<name>rssSiteStyleClass</name>
+			<required>false</required>
+		</attribute>
+		<attribute>
+			<name>postTimeStyleClass</name>
+		</attribute>
+		<attribute>
+			<name>entrysSummaryStyleClass</name>
+		</attribute>
+		<attribute>
+			<name>readMoreStyleClass</name>
+		</attribute>
+		<attribute>
+			<name>rssSiteNameStyleClass</name>
+		</attribute>
+		<attribute>
+			<name>rssEntryStyleClass</name>
+		</attribute>
+
+	</tag>
+</taglib>
